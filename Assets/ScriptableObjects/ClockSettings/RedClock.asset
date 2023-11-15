@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _secHandMaterial: {fileID: 2100000, guid: b8707176645088e4f9f2ddf69eebb35f, type: 2}
   _dayNames:
+  - Sun
   - Mon
   - Tue
   - Wed
   - Thu
   - Fri
   - Sat
-  - Sun
   _offset: 0

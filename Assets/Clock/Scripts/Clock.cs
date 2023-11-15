@@ -1,33 +1,37 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class Clock : MonoBehaviour
+public class Clock : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    private GameObject _clockRoot;
+
     [SerializeField]
     private GameObject _hourClockRoot;
     [SerializeField]
     private GameObject _minuteClockRoot;
     [SerializeField]
     private GameObject _secondsClockRoot;
+    [SerializeField]
+    private TextMeshPro _textMesh;
+    [SerializeField]
+    private float _rotationSpeed = 15f;
 
-    [SerializeField]
     private float _hourRotation;
-    [SerializeField]
     private float _minuteRotation;
-    [SerializeField]
     private float _secondsRotation;
-    // Start is called before the first frame update
+    private DateTime _dateTimeOffset;
+
     void Start()
     {
-        Debug.Log(DateTime.Now.Hour);
+        SetClockSettings();
     }
 
     // TODO: Refactor this
     void FixedUpdate()
     {
-        _hourRotation = 360f / ((24f / DateTime.Now.Hour) / 2f);
+        _hourRotation = 360f / ((24f / _dateTimeOffset.Hour) / 2f);
         _hourClockRoot.transform.localRotation = Quaternion.Euler(0f, _hourRotation, 0f);
 
         _minuteRotation = 360f / (60f / DateTime.Now.Minute);
@@ -35,5 +39,24 @@ public class Clock : MonoBehaviour
 
         _secondsRotation = 360f / (60f / ((float)DateTime.Now.Second + 1f));
         _secondsClockRoot.transform.localRotation = Quaternion.Euler(0f, _secondsRotation, 0f);
+
+        this.transform.Rotate(0f, Time.deltaTime * _rotationSpeed, 0f);
+    }
+
+    public void SetClockSettings()
+    {
+        var clockSettings = GameController.Instance.CurrentClockVariant;
+
+        _dateTimeOffset = DateTime.Now.AddHours(clockSettings.Offset);
+
+        _textMesh.text = clockSettings.DayNames[(int)DateTime.Now.DayOfWeek];
+
+        var secondHandMeshRenderer = _secondsClockRoot.GetComponentInChildren<MeshRenderer>();
+        secondHandMeshRenderer.material = clockSettings.SecHandMaterial;
+    }
+
+    public void Interact()
+    {
+        Debug.Log("Interact");
     }
 }

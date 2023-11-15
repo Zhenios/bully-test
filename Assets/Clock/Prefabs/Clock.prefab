@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1947789989705705044}
   - component: {fileID: 7032165520587498875}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: SphereRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5016425938032346218}
   - component: {fileID: 4594761084715860988}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: ClockRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,6 +487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7596755062888354881}
   - component: {fileID: 4030374518211845227}
+  - component: {fileID: 1400582194687514989}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Untagged
@@ -522,12 +523,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb767df1e215e0e4e921428f87760cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clockRoot: {fileID: 900083844019959785}
   _hourClockRoot: {fileID: 2843820219878336684}
   _minuteClockRoot: {fileID: 1548884645609758566}
   _secondsClockRoot: {fileID: 3328680566150770236}
-  _hourRotation: 0
-  _minuteRotation: 0
-  _secondsRotation: 0
+  _textMesh: {fileID: 1131754934445757085}
+  _rotationSpeed: 15
+--- !u!65 &1400582194687514989
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298346959009928254}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: 0.54, z: 0}
 --- !u!1 &5953744338235393479
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wed
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -844,7 +866,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.8
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -951,7 +973,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8707176645088e4f9f2ddf69eebb35f, type: 2}
+  - {fileID: 2100000, guid: 1d564532971c0594c96bb150bb82a736, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

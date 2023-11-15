@@ -24,4 +24,45 @@ public class GameController : Singleton<GameController>
             return _currentClockVariant;
         }
     }
+
+    private Vector3 _screenPosition;
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            _screenPosition = Input.mousePosition;
+
+            Ray ray = Camera.main.ScreenPointToRay(_screenPosition);
+            if (Physics.Raycast(ray, out RaycastHit hitData))
+            {
+                IInteractable interactableObj = hitData.collider.GetComponent<IInteractable>();
+                if (interactableObj != null)
+                {
+                    interactableObj.Interact();
+                }
+                Debug.Log(hitData.collider.name);
+            }
+        }
+
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            _screenPosition = touch.position;
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(_screenPosition);
+                if (Physics.Raycast(ray, out RaycastHit hitData))
+                {
+                    IInteractable interactableObj = hitData.collider.GetComponent<IInteractable>();
+                    if (interactableObj != null)
+                    {
+                        interactableObj.Interact();
+                    }
+                    Debug.Log(hitData.collider.name);
+                }
+            }
+        }
+    }
 }
