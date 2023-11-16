@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameController : Singleton<GameController>
 {
@@ -10,7 +11,7 @@ public class GameController : Singleton<GameController>
     {
         get => _clockVariants;
     }
-
+    [SerializeField]
     private SO_ClockVariant _currentClockVariant;
     public SO_ClockVariant CurrentClockVariant
     {
@@ -24,6 +25,8 @@ public class GameController : Singleton<GameController>
             return _currentClockVariant;
         }
     }
+    [SerializeField]
+    private UnityEvent _clockSettingsChanged;
 
     private Vector3 _screenPosition;
 
@@ -41,7 +44,6 @@ public class GameController : Singleton<GameController>
                 {
                     interactableObj.Interact();
                 }
-                Debug.Log(hitData.collider.name);
             }
         }
 
@@ -60,9 +62,38 @@ public class GameController : Singleton<GameController>
                     {
                         interactableObj.Interact();
                     }
-                    Debug.Log(hitData.collider.name);
                 }
             }
         }
+    }
+
+    public void NextClockVariant()
+    {
+        int currentIndex = _clockVariants.FindIndex((x) => x == _currentClockVariant);
+        currentIndex++;
+        if (currentIndex > _clockVariants.Count - 1)
+        {
+            _currentClockVariant = _clockVariants[0];
+        }
+        else
+        {
+            _currentClockVariant = _clockVariants[currentIndex];
+        }
+        _clockSettingsChanged.Invoke();
+    }
+
+    public void PreviousClockVariant()
+    {
+        int currentIndex = _clockVariants.FindIndex((x) => x == _currentClockVariant);
+        currentIndex--;
+        if (currentIndex < 0)
+        {
+            _currentClockVariant = _clockVariants[_clockVariants.Count - 1];
+        }
+        else
+        {
+            _currentClockVariant = _clockVariants[currentIndex];
+        }
+        _clockSettingsChanged.Invoke();
     }
 }

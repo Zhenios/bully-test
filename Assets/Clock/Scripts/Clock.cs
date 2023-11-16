@@ -31,6 +31,13 @@ public class Clock : MonoBehaviour, IInteractable
     // TODO: Refactor this
     void FixedUpdate()
     {
+        ClockLoop();
+
+        this.transform.Rotate(0f, Time.deltaTime * _rotationSpeed, 0f);
+    }
+
+    void ClockLoop()
+    {
         _hourRotation = 360f / ((24f / _dateTimeOffset.Hour) / 2f);
         _hourClockRoot.transform.localRotation = Quaternion.Euler(0f, _hourRotation, 0f);
 
@@ -39,8 +46,6 @@ public class Clock : MonoBehaviour, IInteractable
 
         _secondsRotation = 360f / (60f / ((float)DateTime.Now.Second + 1f));
         _secondsClockRoot.transform.localRotation = Quaternion.Euler(0f, _secondsRotation, 0f);
-
-        this.transform.Rotate(0f, Time.deltaTime * _rotationSpeed, 0f);
     }
 
     public void SetClockSettings()
