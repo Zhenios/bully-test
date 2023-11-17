@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class Clock : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private GameObject _clockRoot;
+    private GameObject _ballRoot;
 
     [SerializeField]
     private GameObject _hourClockRoot;
@@ -62,6 +63,23 @@ public class Clock : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Interact");
+        GameObject ball = ObjectPool.SharedInstance.GetPooledObject();
+        if (ball != null)
+        {
+            ball.transform.position = _ballRoot.transform.position;
+            ball.transform.rotation = _ballRoot.transform.rotation;
+            ball.GetComponent<Rigidbody>().isKinematic = true;
+            ball.SetActive(true);
+            ball.GetComponent<Rigidbody>().isKinematic = false;
+            
+            ball.GetComponent<Rigidbody>().AddForceAtPosition((Vector3.up + (Vector3.left * UnityEngine.Random.Range(-0.6f, 0.6f))) * 5f, _ballRoot.transform.position);
+            StartCoroutine(DeadCoroutine(ball));
+        }
+    }
+
+    IEnumerator DeadCoroutine(GameObject ball)
+    {
+        yield return new WaitForSeconds(3f);
+        ball.SetActive(false);
     }
 }
