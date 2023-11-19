@@ -73,10 +73,6 @@ Use:
 ![Editor](https://github.com/BullyEntertainment/test-task/raw/master/editor.png "Editor")
 ![App](https://github.com/BullyEntertainment/test-task/raw/master/screen.png "App")
 
-### Video
-
-[![AE in action](http://img.youtube.com/vi/sz8r3LHnoCU/0.jpg)](http://www.youtube.com/watch?v=sz8r3LHnoCU "AR In Action")
-
 ### Distortion 
 
 ![Distortion](http://i.ytimg.com/vi/Uef8FFNA-F0/hqdefault.jpg "Example of distortion")
