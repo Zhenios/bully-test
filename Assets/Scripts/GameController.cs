@@ -32,7 +32,7 @@ public class GameController : Singleton<GameController>
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        /*if (Input.GetButtonDown("Fire1"))
         {
             _screenPosition = Input.mousePosition;
 
@@ -45,7 +45,7 @@ public class GameController : Singleton<GameController>
                     interactableObj.Interact();
                 }
             }
-        }
+        }*/
 
         if (Input.touchCount > 0)
         {

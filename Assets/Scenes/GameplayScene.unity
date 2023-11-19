@@ -324,7 +324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &284705486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +408,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 782628377}
+  - {fileID: 937449414}
+  - {fileID: 695221491}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &284705489
@@ -617,11 +620,11 @@ GameObject:
   - component: {fileID: 410173157}
   m_Layer: 0
   m_Name: ARCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &410173152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,13 +742,13 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -800,7 +803,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 328812041}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 284705488}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &695221492
 CapsuleCollider:
@@ -1006,6 +1009,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!4 &782628377 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7596755062888354881, guid: 98e3d43906e120142ae8e40f3bf43d68,
+    type: 3}
+  m_PrefabInstance: {fileID: 5358406488553689270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937449413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1049,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 228928045}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 284705488}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &937449415
 CapsuleCollider:
@@ -1223,11 +1232,11 @@ GameObject:
   - component: {fileID: 1554057323}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1554057320
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1401,7 +1410,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 284705488}
     m_Modifications:
     - target: {fileID: 5298346959009928254, guid: 98e3d43906e120142ae8e40f3bf43d68,
         type: 3}
@@ -1475,8 +1484,5 @@ SceneRoots:
   - {fileID: 1554057322}
   - {fileID: 705507995}
   - {fileID: 410173156}
-  - {fileID: 5358406488553689270}
-  - {fileID: 937449414}
-  - {fileID: 695221491}
   - {fileID: 284705488}
   - {fileID: 1777272377}
