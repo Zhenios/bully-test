@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 [CreateAssetMenu(fileName = "Clock", menuName = "Clock/Clock Variant", order = 1)]
 public class SO_ClockVariant : ScriptableObject
 {
