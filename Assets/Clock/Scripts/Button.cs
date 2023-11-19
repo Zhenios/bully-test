@@ -5,7 +5,9 @@ using UnityEngine;
 public class Button : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private E_ButtonSide _buttonSide; 
+    private E_ButtonSide _buttonSide;
+    [SerializeField]
+    private AudioSource _audioSource;
 
     public void Interact()
     {
@@ -13,9 +15,11 @@ public class Button : MonoBehaviour, IInteractable
         {
             case E_ButtonSide.Left:
                 GameController.Instance.PreviousClockVariant();
+                _audioSource.Play();
                 break;
             case E_ButtonSide.Right:
                 GameController.Instance.NextClockVariant();
+                _audioSource.Play();
                 break;
             default:
                 break;
