@@ -64,8 +64,6 @@ Use:
 
 ### Builds
 
-[iOS App](https://github.com/BullyEntertainment/test-task/raw/master/builds/DevChallenge.ipa)
-
 [Android App](https://github.com/Zhenios/bully-test/blob/master/builds/TestTaskEugenBaraniuk.apk)
 
 ### Unity Screens
